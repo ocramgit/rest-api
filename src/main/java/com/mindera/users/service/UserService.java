@@ -34,11 +34,12 @@ public class UserService {
         return userRepository.getAllUsers();
     }
 
-    public Optional<User> getUser(Integer id) {
+    public User getUser(Integer id) {
 
         return userRepository.getAllUsers().stream()
                 .filter(e -> e.getId() == id)
-                .
+                .findFirst()
+                .get();
     }
 
     public void delete(Integer id) {
@@ -46,6 +47,7 @@ public class UserService {
                 .filter(e -> e.getId() == id)
                 .findFirst()
                 .get();
+
 
         userRepository.getAllUsers().remove(user);
     }
